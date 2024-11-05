@@ -19,7 +19,7 @@ class UsersPage extends StatelessWidget {
           appBar: appBar(context, authProvider),
           body: Column(
             children: [
-              searchField("Search by users", context),
+              searchField("Search by users", context, true),
               SizedBox(
                 height: 20,
               ),

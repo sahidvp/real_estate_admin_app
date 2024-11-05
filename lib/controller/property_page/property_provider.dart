@@ -26,6 +26,11 @@ class PropertyProvider with ChangeNotifier {
   List<Map<String, dynamic>> get allproperties =>
       _searchQuery.isEmpty ? _properties : _filteredProperties;
   ////
+  ///search user
+  List<Map<String, dynamic>> _filteredUsers = [];
+  String _userSearchQuery = '';
+  List<Map<String, dynamic>> get allUsers =>
+      _userSearchQuery.isEmpty ? _users : _filteredUsers;
 
   ///search
   void searchProperties(String query) {
@@ -35,6 +40,22 @@ class PropertyProvider with ChangeNotifier {
     } else {
       _filteredProperties = _properties.where((property) {
         return property['title'].toLowerCase().contains(_searchQuery);
+      }).toList();
+    }
+    notifyListeners(); // Notify listeners to update the UI
+  }
+
+  ////saerch user
+  void searchUsers(String query) {
+    _userSearchQuery = query.toLowerCase();
+    if (_userSearchQuery.isEmpty) {
+      _filteredUsers = []; // Reset filtered users
+    } else {
+      _filteredUsers = _users.where((user) {
+        print("searchin.......");
+        print(_filteredUsers.length);
+        return user['userName'] != null &&
+            user['userName'].toLowerCase().contains(_userSearchQuery);
       }).toList();
     }
     notifyListeners(); // Notify listeners to update the UI

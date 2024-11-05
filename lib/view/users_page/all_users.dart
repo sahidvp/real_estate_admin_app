@@ -14,13 +14,13 @@ Expanded allUsers() {
       ),
       child: Consumer<PropertyProvider>(
         builder: (context, provider, child) {
-          if (provider.users.isEmpty) {
+          if (provider.allUsers.isEmpty) {
             return const Center(child: CircularProgressIndicator());
           }
 
           return ListView.separated(
             itemBuilder: (context, index) {
-              final user = provider.users[index];
+              final user = provider.allUsers[index];
               return ListTile(
                 leading: user['imageUrl'] == null
                     ? ClipOval(
@@ -53,7 +53,7 @@ Expanded allUsers() {
               );
             },
             separatorBuilder: (context, index) => const Divider(),
-            itemCount: provider.users.length,
+            itemCount: provider.allUsers.length,
           );
         },
       ),

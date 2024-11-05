@@ -24,7 +24,7 @@ class PropertyPage extends StatelessWidget {
           padding: EdgeInsets.only(left: 15),
           child: Column(
             children: [
-              searchField("Search properties",context),
+              searchField("Search properties",context,false),
               SizedBox(height: sh * .02),
               SizedBox(height: sh * .02),
               recentProperties(false)

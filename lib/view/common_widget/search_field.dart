@@ -3,9 +3,9 @@ import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:provider/provider.dart';
 import 'package:realestate_admin_app/controller/property_page/property_provider.dart';
 
-Container searchField(String hintText,BuildContext context) {
-   final provider = Provider.of<PropertyProvider>(context, listen: false);
-  
+Container searchField(String hintText, BuildContext context,bool isUser) {
+  final provider = Provider.of<PropertyProvider>(context, listen: false);
+
   return Container(
     decoration: BoxDecoration(
       color: Colors.grey,
@@ -13,6 +13,8 @@ Container searchField(String hintText,BuildContext context) {
     ),
     child: TextFormField(
       onChanged: (value) {
+        isUser?
+        provider.searchUsers(value):
         provider.searchProperties(value); // Update the search query
       },
       decoration: InputDecoration(
